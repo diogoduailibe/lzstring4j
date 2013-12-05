@@ -18,7 +18,7 @@ Using lzstring4j is quite simple. But lets see:
 Checkout and compile the project:
 
 ``` bash
-git clone git://github.com/diogoduailibe/lzstring4j.git
+git clone https://github.com/diogoduailibe/lzstring4j.git
 cd lzstring4j
 ant jar
 mv jar/lzstring4j.jar /path/to/your/libs/project
@@ -28,35 +28,41 @@ If you're using ant, change your build.xml to include lzstring4j.jar. If you're 
 
 Afterwards, you'll be able to use this library: 
 
+### Normal Compression and Decompression:
+
 ``` java
 	
 	    // Normal Compression and Decompression
 		String test = "Lets see how much we can compress this string!";
 
-		String output = compress(test);
+		String output = LZString.compress(test);
 
 		System.out.println("Compressed: " + output);
 
-		String decompressed = decompress(output);
+		String decompressed = LZStringdecompress(output);
 		
 		System.out.println("Decompressed: " + decompressed);
-		
+```
+
+### UTF-16 Compression and Decompression:
+
+``` java		
 		//UTF-16 Compression and Decompression 
 		String testUTF16 = "Lets see how much we can compress this string!";
 
-		String outputUTF16 = compressToUTF16(testUTF16);
+		String outputUTF16 = LZString.compressToUTF16(testUTF16);
 
 		System.out.println("Compressed: " + outputUTF16);
 
-		String decompressedUTF16 = decompressFromUTF16(outputUTF16);
+		String decompressedUTF16 = LZString.decompressFromUTF16(outputUTF16);
 		
 		System.out.println("Decompressed: " + decompressedUTF16);
-
 ```
+
  
 ## Checkout
 
-	git clone git://github.com/diogoduailibe/lzstring4j.git
+	git clone https://github.com/diogoduailibe/lzstring4j.git
 
 ## Building
 
