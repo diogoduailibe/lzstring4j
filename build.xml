@@ -53,8 +53,7 @@
 	<target name="jar" depends="build-project">
 	        <mkdir dir="jar"/>
 	        <jar destfile="jar/lzstring4j.jar" basedir="bin">
-		    <zipgroupfileset dir="libs/" includes="*.jar"/>
-	            <manifest>
+		    	<manifest>
 	            </manifest>
 	        </jar>
 	</target>
