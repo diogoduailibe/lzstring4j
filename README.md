@@ -6,7 +6,7 @@ This idea is inspired by [lz-string-java](https://github.com/ownaginatious/lz-st
 
 Features:
 
- * Last version of JavaScript LZString Library (version 1.3.3) 
+ * Based on last version of JavaScript LZString Library (version 1.3.3) 
  * UTF-16 compression
  * Interoperable with the JavaScript Library through the UTF-16 compression methods (Java Server -> JS on Web or Node.js server -> Java Client/Android) 
  	thanks to this [post](http://www.productiverage.com/javascript-compression-putting-my-json-search-indexes-on-a-diet).
