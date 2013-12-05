@@ -65,7 +65,7 @@ Afterwards, you'll be able to use this library:
 	git clone https://github.com/diogoduailibe/lzstring4j.git
 
 ## Building
-
+	
 to build a jar-file:
 
 	cd $PATH_TO_LZSTRING4J
