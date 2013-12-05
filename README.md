@@ -28,7 +28,7 @@ If you're using ant, change your build.xml to include lzstring4j.jar. If you're 
 
 Afterwards, you'll be able to use this library: 
 
-### Normal Compression and Decompression:
+#### Normal Compression and Decompression:
 
 ``` java
 	
@@ -39,12 +39,12 @@ Afterwards, you'll be able to use this library:
 
 		System.out.println("Compressed: " + output);
 
-		String decompressed = LZStringdecompress(output);
+		String decompressed = LZString.decompress(output);
 		
 		System.out.println("Decompressed: " + decompressed);
 ```
 
-### UTF-16 Compression and Decompression:
+#### UTF-16 Compression and Decompression:
 
 ``` java		
 		//UTF-16 Compression and Decompression 
