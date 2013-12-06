@@ -16,7 +16,7 @@ public class LZString {
 		String context_c = "";
 		String context_wc = "";
 		String context_w = "";
-		double context_enlargeIn = 2f; // Compensate for the first entry which
+		double context_enlargeIn = 2d; // Compensate for the first entry which
 										// should not count
 		int context_dictSize = 3;
 		int context_numBits = 2;
@@ -25,7 +25,7 @@ public class LZString {
 		int context_data_position = 0;
 
 		for (int ii = 0; ii < uncompressed.length(); ii += 1) {
-			context_c = "" + uncompressed.charAt(ii);
+			context_c = "" + (uncompressed.charAt(ii));
 			if (!context_dictionary.containsKey(context_c)) {
 				context_dictionary.put(context_c, context_dictSize++);
 				context_dictionaryToCreate.add(context_c);
@@ -37,7 +37,8 @@ public class LZString {
 				context_w = context_wc;
 			} else {
 				if (context_dictionaryToCreate.contains(context_w)) {
-					if (Character.codePointAt(context_w, 0) < 256) {
+					
+					if (((int)context_w.charAt(0)) < 256) {
 						for (int i = 0; i < context_numBits; i++) {
 							context_data_val = (context_data_val << 1);
 							if (context_data_position == 15) {
@@ -48,7 +49,7 @@ public class LZString {
 								context_data_position++;
 							}
 						}
-						value = Character.codePointAt(context_w, 0);
+						value = (int) context_w.charAt(0);
 						for (int i = 0; i < 8; i++) {
 							context_data_val = (context_data_val << 1)
 									| (value & 1);
@@ -74,7 +75,7 @@ public class LZString {
 							}
 							value = 0;
 						}
-						value = Character.codePointAt(context_w, 0);
+						value = (int) context_w.charAt(0);
 						for (int i = 0; i < 16; i++) {
 							context_data_val = (context_data_val << 1)
 									| (value & 1);
@@ -89,7 +90,7 @@ public class LZString {
 						}
 					}
 					context_enlargeIn--;
-					if (context_enlargeIn == 0f) {
+					if (Double.valueOf(context_enlargeIn).intValue() == 0) {
 						context_enlargeIn = Math.pow(2, context_numBits);
 						context_numBits++;
 					}
@@ -111,7 +112,7 @@ public class LZString {
 
 				}
 				context_enlargeIn--;
-				if (context_enlargeIn == 0) {
+				if (Double.valueOf(context_enlargeIn).intValue() == 0) {
 					context_enlargeIn = Math.pow(2, context_numBits);
 					context_numBits++;
 				}
@@ -124,7 +125,7 @@ public class LZString {
 		// Output the code for w.
 		if (!"".equals(context_w)) {
 			if (context_dictionaryToCreate.contains(context_w)) {
-				if (Character.codePointAt(context_w, 0) < 256) {
+				if (((int)context_w.charAt(0)) < 256) {
 					for (int i = 0; i < context_numBits; i++) {
 						context_data_val = (context_data_val << 1);
 						if (context_data_position == 15) {
@@ -135,7 +136,7 @@ public class LZString {
 							context_data_position++;
 						}
 					}
-					value = Character.codePointAt(context_w, 0);
+					value = (int) context_w.charAt(0);
 					for (int i = 0; i < 8; i++) {
 						context_data_val = (context_data_val << 1)
 								| (value & 1);
@@ -161,7 +162,7 @@ public class LZString {
 						}
 						value = 0;
 					}
-					value = Character.codePointAt(context_w, 0);
+					value = (int) context_w.charAt(0);
 					for (int i = 0; i < 16; i++) {
 						context_data_val = (context_data_val << 1)
 								| (value & 1);
@@ -176,7 +177,7 @@ public class LZString {
 					}
 				}
 				context_enlargeIn--;
-				if (context_enlargeIn == 0) {
+				if (Double.valueOf(context_enlargeIn).intValue() == 0) {
 					context_enlargeIn = Math.pow(2, context_numBits);
 					context_numBits++;
 				}
@@ -197,7 +198,7 @@ public class LZString {
 
 			}
 			context_enlargeIn--;
-			if (context_enlargeIn == 0) {
+			if (Double.valueOf(context_enlargeIn).intValue() == 0) {
 				context_enlargeIn = Math.pow(2, context_numBits);
 				context_numBits++;
 			}
@@ -250,7 +251,7 @@ public class LZString {
 		int d;
 		Data data = Data.getInstance();
 		data.string = compressed;
-		data.val = Character.codePointAt(compressed, 0);
+		data.val = (int) compressed.charAt(0);
 		data.position = 32768;
 		data.index = 1;
 
@@ -385,7 +386,7 @@ public class LZString {
 				return result;
 			}
 
-			if (enlargeIn == 0) {
+			if (Double.valueOf(enlargeIn).intValue() == 0) {
 				enlargeIn = Math.pow(2, numBits);
 				numBits++;
 			}
@@ -408,7 +409,7 @@ public class LZString {
 
 			w = entry;
 
-			if (enlargeIn == 0) {
+			if (Double.valueOf(enlargeIn).intValue() == 0) {
 				enlargeIn = Math.pow(2, numBits);
 				numBits++;
 			}
@@ -427,7 +428,7 @@ public class LZString {
 		input = LZString.compress(input);
 
 		for (int i = 0; i < input.length(); i++) {
-			c = Character.codePointAt(input, i);
+			c = (int) input.charAt(i);
 			switch (status++) {
 			case 0:
 				output += (char) ((c >> 1) + 32);
@@ -506,7 +507,7 @@ public class LZString {
 		int current = 0, c, status = 0, i = 0;
 
 		while (i < input.length()) {
-			c = Character.codePointAt(input, i) - 32;
+			c = (((int)input.charAt(i)) - 32);
 
 			switch (status++) {
 			case 0:
@@ -585,14 +586,27 @@ public class LZString {
 
 	public static void main(String args[]) throws Exception {
 
-		String test = "Lets see how much we can compress this string!";
+		// Normal Compression and Decompression
+        String test = "Lets see how much we can compress this string!";
 
-		String output = compress(test);
+        String output = LZString.compress(test);
 
-		System.out.println("Compressed: " + output);
+        System.out.println("Compressed: " + output);
 
-		String decompressed = decompress(output);
-		System.out.println("Decompressed: " + decompressed);
+        String decompressed = LZString.decompress(output);
+
+        System.out.println("Decompressed: " + decompressed);
+        
+        //UTF-16 Compression and Decompression 
+        String testUTF16 = "Lets see how much we can compress this string!";
+
+        String outputUTF16 = LZString.compressToUTF16(testUTF16);
+
+        System.out.println("Compressed: " + outputUTF16);
+
+        String decompressedUTF16 = LZString.decompressFromUTF16(outputUTF16);
+
+        System.out.println("Decompressed: " + decompressedUTF16);
 	}
 }
 
