@@ -88,8 +88,15 @@ This Library was designed with portability in mind.
 
 ## TODO
 
-* Implement base64 compression and decompression methods
+* Implement base64 compression. (Base64 Decompression was implemented by [helloanand](https://github.com/helloanand). Thank's!) 
 * More tests...
+
+
+## CONTRIBUTORS
+
+* diogoduailibe
+* [helloanand](https://github.com/helloanand)
+
 
 ## License - the boring stuff...
 
