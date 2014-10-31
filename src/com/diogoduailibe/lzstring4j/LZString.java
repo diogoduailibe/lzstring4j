@@ -672,6 +672,46 @@ public class LZString {
 
     return str.toString();
   }
+  
+  public static String encode64(String input) {
+    StringBuilder result = new StringBuilder((input.length() * 8 + 1) / 3);
+    for (int i = 0, max = input.length() << 1; i < max;) {
+      int left = max - i;
+      if (left >= 3) {
+        int ch1 = (input.charAt(i >> 1) >> ((1 - (i & 1)) << 3)) & 0xff;
+        i++;
+        int ch2 = (input.charAt(i >> 1) >> ((1 - (i & 1)) << 3)) & 0xff;
+        i++;
+        int ch3 = (input.charAt(i >> 1) >> ((1 - (i & 1)) << 3)) & 0xff;
+        i++;
+        result.append(keyStr.charAt((ch1 >> 2) & 0x3f));
+        result.append(keyStr.charAt(((ch1 << 4) + (ch2 >> 4)) & 0x3f));
+        result.append(keyStr.charAt(((ch2 << 2) + (ch3 >> 6)) & 0x3f));
+        result.append(keyStr.charAt(ch3 & 0x3f));
+      } else if (left == 2) {
+        int ch1 = (input.charAt(i >> 1) >> ((1 - (i & 1)) << 3)) & 0xff;
+        i++;
+        int ch2 = (input.charAt(i >> 1) >> ((1 - (i & 1)) << 3)) & 0xff;
+        i++;
+        result.append(keyStr.charAt((ch1 >> 2) & 0x3f));
+        result.append(keyStr.charAt(((ch1 << 4) + (ch2 >> 4)) & 0x3f));
+        result.append(keyStr.charAt(((ch2 << 2)) & 0x3f));
+        result.append('=');
+      } else if (left == 1) {
+        int ch1 = (input.charAt(i >> 1) >> ((1 - (i & 1)) << 3)) & 0xff;
+        i++;
+        result.append(keyStr.charAt((ch1 >> 2) & 0x3f));
+        result.append(keyStr.charAt(((ch1 << 4)) & 0x3f));
+        result.append('=');
+        result.append('=');
+      }
+    }
+    return result.toString();
+  }
+
+  public static String compressToBase64(String input) {
+    return encode64(compress(input));
+  }
 
 
 
@@ -698,6 +738,16 @@ public class LZString {
     String decompressedUTF16 = LZString.decompressFromUTF16(outputUTF16);
 
     System.out.println("Decompressed: " + decompressedUTF16);
+    
+    String testBase64 = "Lets see how much we can compress this string!";
+
+    String outputBase64 = LZString.compressToBase64(testBase64);
+
+    System.out.println("Compressed: " + outputBase64);
+
+    String decompressedBase64 = LZString.decompressFromBase64(outputBase64);
+
+    System.out.println("Decompressed: " + decompressedBase64);
   }
 }
 
