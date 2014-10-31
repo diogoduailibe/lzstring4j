@@ -8,6 +8,7 @@ Features:
 
  * Based on latest version of JavaScript LZString Library (version 1.3.3) 
  * UTF-16 compression
+ * Base64 compression
  * Interoperable with the JavaScript Library through the UTF-16 compression methods (Java Server -> JS on Web or Node.js server -> Java Client/Android) 
  	thanks to this [post](http://www.productiverage.com/javascript-compression-putting-my-json-search-indexes-on-a-diet).
 
@@ -88,14 +89,15 @@ This Library was designed with portability in mind.
 
 ## TODO
 
-* Implement base64 compression. (Base64 Decompression was implemented by [helloanand](https://github.com/helloanand). Thank's!) 
+* Improve code to execute more efficiently
 * More tests...
 
 
-## CONTRIBUTORS
+## CONTRIBUTORS (Thanks to all, by the way!)
 
 * diogoduailibe
 * [helloanand](https://github.com/helloanand)
+* [cloudeecn] (https://github.com/cloudeecn)
 
 
 ## License - the boring stuff...
