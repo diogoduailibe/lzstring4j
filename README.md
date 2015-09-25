@@ -6,7 +6,7 @@ This idea is inspired by [lz-string-java](https://github.com/ownaginatious/lz-st
 
 Features:
 
- * Based on latest version of JavaScript LZString Library (version 1.3.3) 
+ * Based on JavaScript LZString Library (version 1.3.3) 
  * UTF-16 compression
  * Base64 compression
  * Interoperable with the JavaScript Library through the UTF-16 compression methods (Java Server -> JS on Web or Node.js server -> Java Client/Android) 
@@ -90,6 +90,7 @@ This Library was designed with portability in mind.
 ## TODO
 
 * Improve code to execute more efficiently
+* Update to version 1.4.4
 * More tests...
 
 

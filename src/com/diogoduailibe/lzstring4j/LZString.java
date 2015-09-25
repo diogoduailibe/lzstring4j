@@ -1,10 +1,10 @@
 package com.diogoduailibe.lzstring4j;
 
 
-import com.sun.org.apache.xml.internal.security.utils.Base64;
-
-import java.io.UnsupportedEncodingException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 
 public class LZString {
 
