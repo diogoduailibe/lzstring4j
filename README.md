@@ -98,7 +98,7 @@ This Library was designed with portability in mind.
 
 * diogoduailibe
 * [helloanand](https://github.com/helloanand)
-* [cloudeecn] (https://github.com/cloudeecn)
+* [cloudeecn](https://github.com/cloudeecn)
 
 
 ## License - the boring stuff...
