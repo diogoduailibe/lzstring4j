@@ -1,4 +1,4 @@
-package com.diogoduailibe.lzstring4j;
+package com.github.diogoduailibe.lzstring4j;
 
 
 import java.util.ArrayList;
@@ -621,7 +621,7 @@ public class LZString {
 
   }
 
-  public static String decompressFromBase64(String input) throws Exception {
+  public static String decompressFromBase64(String input) {
     return LZString.decompress(decode64(input));
   }
 
@@ -635,7 +635,7 @@ public class LZString {
     int output_=0;
     int chr1, chr2, chr3;
     int enc1, enc2, enc3, enc4;
-    int i = 0; int j=0;
+    int i = 0;
 
     while (i < input.length()) {
 
@@ -713,42 +713,6 @@ public class LZString {
     return encode64(compress(input));
   }
 
-
-
-  public static void main(String args[]) throws Exception {
-
-    // Normal Compression and Decompression
-    String test = "Lets see how much we can compress this string!";
-
-    String output = LZString.compress(test);
-
-    System.out.println("Compressed: " + output);
-
-    String decompressed = LZString.decompress(output);
-
-    System.out.println("Decompressed: " + decompressed);
-
-    //UTF-16 Compression and Decompression
-    String testUTF16 = "Lets see how much we can compress this string!";
-
-    String outputUTF16 = LZString.compressToUTF16(testUTF16);
-
-    System.out.println("Compressed: " + outputUTF16);
-
-    String decompressedUTF16 = LZString.decompressFromUTF16(outputUTF16);
-
-    System.out.println("Decompressed: " + decompressedUTF16);
-    
-    String testBase64 = "Lets see how much we can compress this string!";
-
-    String outputBase64 = LZString.compressToBase64(testBase64);
-
-    System.out.println("Compressed: " + outputBase64);
-
-    String decompressedBase64 = LZString.decompressFromBase64(outputBase64);
-
-    System.out.println("Decompressed: " + decompressedBase64);
-  }
 }
 
 class Data {

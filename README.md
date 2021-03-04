@@ -21,19 +21,27 @@ Checkout and compile the project:
 ``` bash
 git clone https://github.com/diogoduailibe/lzstring4j.git
 cd lzstring4j
-ant jar
-mv jar/lzstring4j.jar /path/to/your/libs/project
+mvn clean install
+
 ```
 
-If you're using ant, change your build.xml to include lzstring4j.jar. If you're eclipse, add the jar to your project buildpath.
+Then, import in your project using maven dependecy
+
+```xml
+<dependency>
+	<groupId>com.github.diogoduailibe</groupId>
+	<artifactId>lzstring4j</artifactId>
+	<version>1.3.3</version>
+</dependency>
+```
+
 
 Afterwards, you'll be able to use this library: 
 
 #### Normal Compression and Decompression:
 
 ``` java
-	
-	    // Normal Compression and Decompression
+	   // Normal Compression and Decompression
 		String test = "Lets see how much we can compress this string!";
 
 		String output = LZString.compress(test);
@@ -60,6 +68,30 @@ Afterwards, you'll be able to use this library:
 		System.out.println("Decompressed: " + decompressedUTF16);
 ```
 
+#### Base64 Compression and Decompression:
+
+``` java		
+		//Base64 Compression and Decompression 
+		String testBase64 = "Lets see how much we can compress this string!";
+
+		String outputBase64 = LZString.compressToBase64(testBase64);
+
+		System.out.println("Compressed: " + outputBase64);
+
+		String decompressedBase64 = LZString.decompressFromBase64(outputBase64);
+		
+		System.out.println("Decompressed: " + decompressedBase64);
+```
+
+## Tests
+
+In order to run JUnit tests, just run: 
+
+```bash
+mvn test
+```
+
+You'll see tests for Normal, UTF-16 and Base64 compression and decompression.
  
 ## Checkout
 
@@ -70,10 +102,10 @@ Afterwards, you'll be able to use this library:
 to build a jar-file:
 
 	cd $PATH_TO_LZSTRING4J
-	ant jar
-	ls jar/lzstring4j.jar
+	mvn clean install
+	ls target/lzstring4j-<version>.jar
 
-You'll find the lzstring4j-jar in jar/lzstring4j.jar 
+You'll find it in target/lzstring4j-<version>.jar 
 
 ## Bugs
 
