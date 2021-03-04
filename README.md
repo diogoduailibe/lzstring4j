@@ -102,7 +102,7 @@ You'll see tests for Normal, UTF-16 and Base64 compression and decompression.
 to build a jar-file:
 
 	cd $PATH_TO_LZSTRING4J
-	mvn clean install
+	mvn clean package
 	ls target/lzstring4j-<version>.jar
 
 You'll find it in target/lzstring4j-<version>.jar 
