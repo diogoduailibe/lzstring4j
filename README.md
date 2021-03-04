@@ -105,7 +105,7 @@ to build a jar-file:
 	mvn clean package
 	ls target/lzstring4j-<version>.jar
 
-You'll find it in target/lzstring4j-<version>.jar 
+You'll find it in target path
 
 ## Bugs
 
